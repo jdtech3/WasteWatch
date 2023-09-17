@@ -31,8 +31,9 @@ def connect(sid, environ, auth):
 @sio.event
 def disconnect(sid):
     print('disconnect ', sid)
-    print(recognitions)
-    print(max(recognitions, key=recognitions.get))
+    print("All recognitions: ", recognitions)
+    print("RESULT: ", max(recognitions, key=recognitions.get))
+    db.update_surgery(1, max(recognitions, key=recognitions.get))    # state is record obj
 
 @sio.on('frame_data')
 def on_frame_data(sid, data):

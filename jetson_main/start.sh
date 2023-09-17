@@ -1,0 +1,1 @@
+TF_CPP_MIN_LOG_LEVEL=2 LD_PRELOAD=/lib/aarch64-linux-gnu/libGLdispatch.so python3 main.py

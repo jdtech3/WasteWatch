@@ -1,5 +1,4 @@
-from flask import Flask, render_template,redirect
-import requests
+from flask import Flask, render_template,redirect, request
 from db_front_end import Db_Front_End_Methods
 
 db_front_methods = Db_Front_End_Methods()
@@ -35,16 +34,16 @@ def data_page():
 
 @app.route('/start-operation',methods=["POST"])
 def start_operation():
-    category = requests.form.get("category")
-    node = requests.form.get("node_id")
+    category = request.form.get("operation_type")
+    node = request.form.get("node_id")
     db_front_methods.create_surgery(node,category)
-    redirect("/data")
+    return redirect("/data")
 
 @app.route('/end-operation',methods=["POST"])
 def end_operation():
-    node = requests.form.get("node_id")
+    node = request.form.get("node_id")
     db_front_methods.end_surgery(node)
-    redirect("/")
+    return redirect("/")
 
 
 

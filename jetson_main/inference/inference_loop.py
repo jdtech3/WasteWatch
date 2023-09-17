@@ -18,23 +18,12 @@ def load_file(filename):  # metadata file that extracts the class names
 def load_model(model_path):
     return tf.keras.models.load_model(model_path)
 
-# def inference(model, image_bytes, class_names):
-#     image = Image.open(BytesIO(image_bytes))
-#     img_processed = cv2.resize(np.array(image), (128, 128))
-#     img_processed /= 255.0
-    
-#     # inference
-#     predictions = model.predict(np.array([img_processed]))
-    
-#     return class_names[np.argmax(predictions)]
-
 def inference(model, image_bytes, class_names):
     image = Image.open(BytesIO(image_bytes))
     img_processed = cv2.resize(np.array(image), (128, 128))
-    # img_processed /= 255.0
+    img_processed = img_processed / 255.0
     
     # inference
-    predictions = model.predict(np.array([img_processed]))
-    # print(predictions)
+    predictions = model.predict(np.array([img_processed]), verbose=0)\
     
     return class_names[np.argmax(predictions)]

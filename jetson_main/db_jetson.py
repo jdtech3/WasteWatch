@@ -35,8 +35,6 @@ class DBJetson():
     def update_surgery(self, node_id, item_name):
         self.connect()
         with self.conn.cursor() as cur:
-            cur.execute("""UPDATE surgery
-                            SET %s = %s +1
-                            WHERE node_id = %s;""",
-                            (item_name,item_name,node_id))
+            # cur.execute("""UPDATE surgery SET %s = %s + 1 WHERE node_id = %s;""", (item_name,item_name,node_id))
+            cur.execute(f"""UPDATE surgery SET {item_name} = {item_name} + 1 WHERE node_id = {node_id};""")
             self.conn.commit()
