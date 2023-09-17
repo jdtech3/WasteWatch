@@ -1,0 +1,28 @@
+html, body, .container {
+    height: 100%;
+}
+
+#logo {
+    width: 50%;
+}
+
+.item-container {
+    display: flex; /* Display items in a row */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    padding: 20px; /* Add padding to the container */
+}
+
+.item {
+    text-align: center; /* Center text horizontally */
+    margin: 0 10px; /* Add spacing between items */
+}
+
+img {
+    max-width: 100%; /* Make images responsive */
+}
+
+button {
+    display: block; /* Make buttons full width */
+    margin-top: 10px; /* Add spacing between image and button */
+}

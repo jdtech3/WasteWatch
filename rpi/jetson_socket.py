@@ -7,5 +7,3 @@ class JetsonSocket:
 
     def send(self, msg,data):
         self.sio.emit(msg,data)
-
-        

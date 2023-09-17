@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data presentation</title>
+</head>
+<body>
+    {{recent_5}}
+    <br>
+    {{abg_all_time}}
+    <br>
+    <form action="/end-operation" method = "POST">
+        <label for="operation-type" class="form-label">Enter the type of the operation:</label>
+        <select class="form-select mb-3" name="operation_type">
+          {% for type in operation_types %}
+            <option value="{{ type }}">{{ type|title }}</option>
+          {% endfor %}
+        </select>
+        <select class="form-select mb-3" name="node_id">
+          {% for node_id in nodes %}
+            <option value="{{ node_id }}">Node {{ node_id }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-outline-dark">End operation</button>
+      
+      </form>
+</body>
+</html>

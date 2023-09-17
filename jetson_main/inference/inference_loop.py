@@ -1,29 +1,40 @@
 import tensorflow as tf
 import numpy as np
-import keras
 from io import BytesIO
 from PIL import Image
+import yaml
+import cv2
+import os
 
-model = keras.models.load_model('CNN')
+print("TensorFlow version:", tf.__version__)
+print("NumPy version:", np.__version__)
+print("OpenCV version:", cv2.__version__)
 
-def load_file(filename): #metadata file that extracts the class names 
-    with open(filename, "r") as file:
-        class_names = [line.strip() for line in file.readlines()]
+def load_file(filename):  # metadata file that extracts the class names
+    with open(filename, 'r') as file:
+        class_names = yaml.safe_load(file)
     return class_names
 
-def preprocess(image_bytes, size=(128,128)):
-    image = Image.open(BytesIO(image_bytes)) #load image in from memory 
-    img = image.resize(size)
+def load_model(model_path):
+    return tf.keras.models.load_model(model_path)
+
+# def inference(model, image_bytes, class_names):
+#     image = Image.open(BytesIO(image_bytes))
+#     img_processed = cv2.resize(np.array(image), (128, 128))
+#     img_processed /= 255.0
     
-    img_arr = tf.keras.preprocessing.image.img_to_array(img)
-    img_arr = np.expand_dims(img_arr, axis=0) 
-    return img_arr
+#     # inference
+#     predictions = model.predict(np.array([img_processed]))
+    
+#     return class_names[np.argmax(predictions)]
 
-def inference_loop(image_bytes):  
-    predictions = model.predict(preprocess(image_bytes))
-    class_names = load_file('metadata.txt')
-    predicted_label = class_names[np.argmax(predictions[0])]
-    print(f'Predicted Label: {predicted_label}') #send this back to joe
-
-# image is loaded into memory as a byte stream 
-inference_loop(image_bytes)
+def inference(model, image_bytes, class_names):
+    image = Image.open(BytesIO(image_bytes))
+    img_processed = cv2.resize(np.array(image), (128, 128))
+    # img_processed /= 255.0
+    
+    # inference
+    predictions = model.predict(np.array([img_processed]))
+    # print(predictions)
+    
+    return class_names[np.argmax(predictions)]

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediWaste Watcher</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row h-100">
+        <div class="col-6 mx-auto my-auto text-center">
+          <h1>MediWaste Watcher</h1>
+          <img id="logo" class="pt-3" src="https://media.istockphoto.com/id/471629610/vector/caduceus-medical-symbol.jpg?s=612x612&w=0&k=20&c=jLnfdQQphRwsmm6wo0O80sEo-5PhbEY4PHmQgBiRkq0=" alt="Image Description">
+        </div>
+        <div class="col-6 mx-auto my-auto text-center border-start px-5">
+          
+          <h3>New Operation</h3>
+          <form action="/" method = "POST">
+            <label for="operation-type" class="form-label">Enter the type of the operation:</label>
+            <select class="form-select mb-3" name="operation_type">
+              {% for type in operation_types %}
+                <option value="{{ type }}">{{ type|title }}</option>
+              {% endfor %}
+            </select>
+            <select class="form-select mb-3" name="node_id">
+              {% for node_id in nodes %}
+                <option value="{{ node_id }}">Node {{ node_id }}</option>
+              {% endfor %}
+            </select>
+    
+            <button type="submit" class="btn btn-outline-dark">Start operation</button>
+          
+          </form>
+          
+      </div>
+          
+          <div id="output"></div>
+          <div id="graph-container"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+
+</html>

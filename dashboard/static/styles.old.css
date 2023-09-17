@@ -1,0 +1,75 @@
+/* Center the header content vertically and horizontally */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style the image as n/* Center the header content vertically and horizontally */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style the image as needed */
+img {
+    width: 200px;
+    /* Adjust the width as per your image dimensions */
+    height: auto;
+}
+
+/* Center the section content vertically and horizontally */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Center text within the section */
+    padding: 20px;
+    /* Add some padding for spacing */
+}
+
+/* Style the input container to display items horizontally */
+.input-container {
+    display: flex;
+    flex-direction: row;
+    /* Items will be displayed horizontally */
+    align-items: center;
+    /* Center items vertically */
+}
+
+/* Add spacing between input and button */
+.input-container label,
+.input-container input,
+.input-container button {
+    margin: 5px;
+    /* Adjust the margin as needed for spacing */
+}
+
+eeded */ img {
+    width: 50px;
+    /* Adjust the width as per your image dimensions */
+    height: 50px;
+}
+
+/* Center the section content vertically and horizontally */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Center text within the section */
+    padding: 20px;
+    /* Add some padding for spacing */
+}
+
+body {
+    font-family: 'Tangerine|Inconsolata|Droid+Sans';
+}
