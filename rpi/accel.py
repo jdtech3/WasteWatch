@@ -16,4 +16,4 @@ class Accelerometer:
         return angle
 
     def bin_open(self):  # bool return 
-        return self.get_angle() >= 20
+        return self.get_angle() <= 20
