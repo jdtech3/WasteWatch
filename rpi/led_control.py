@@ -2,11 +2,10 @@ import RPi.GPIO as GPIO
 
 class LED:
     def __init__(self):
-        self.led_pins = [7, 11, 13, 15, 29, 31]
-
+        self.led_pins = [13, 15, 29, 31,33]
         GPIO.setmode(GPIO.BOARD)
-
         for pin in self.led_pins:
+            print(pin)
             GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.LOW)
 

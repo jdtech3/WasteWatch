@@ -12,7 +12,7 @@ pi_cam = Camera(90,(360,480))
 while True:
     if accelerometer.bin_open():
         led.on()
-        pi_cam.start_camera(accelerometer,socket_comm)
+        pi_cam.start_camera(accelerometer,socket_comm,led)
 
 
  

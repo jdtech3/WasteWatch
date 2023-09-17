@@ -1,9 +1,7 @@
 from picamera import PiCamera
 from io import BytesIO
 from picamera.exc import PiCameraClosed
-from led_control import LED
 from time  import sleep, time
-led = LED()
 
 
 class Camera:
@@ -13,7 +11,7 @@ class Camera:
         self.resolution = resolution
         self.video_state = False
 
-    def start_camera(self, accelerometer,socket_comm):
+    def start_camera(self, accelerometer,socket_comm,led):
         if self.camera == None:
             self.camera = PiCamera()
             self.camera.resolution = self.resolution
