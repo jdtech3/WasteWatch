@@ -36,9 +36,9 @@ class Db_Front_End_Methods():
         with self.conn.cursor() as cur:
             cur.execute("""SELECT * FROM surgery
                             WHERE category = %s
-                            ORDER BY start_date ASC
+                            ORDER BY start_time ASC
                             LIMIT 5""",
-                            (category))
+                            (category,))
             top_5_data = cur.fetchall()
             self.conn.commit()
             cur.execute("""SELECT AVG(bandage),AVG(cold_compress),AVG(gauze),AVG(glove),AVG(tape),AVG(tweezer) FROM surgery; """)

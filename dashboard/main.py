@@ -29,7 +29,8 @@ def index():
 
 @app.route('/data',methods=["GET","POST"])
 def data_page():
-    recent_5,avg_all_time = db_front_methods.fetch_category_data()
+    category = request.form.get("operation_type")
+    recent_5,avg_all_time = db_front_methods.fetch_category_data(category)
     return render_template('data.html', operation_types=OPERATION_TYPES, nodes=NODES,recent_5 = recent_5,avg_all_time = avg_all_time)
 
 @app.route('/start-operation',methods=["POST"])
@@ -37,7 +38,7 @@ def start_operation():
     category = request.form.get("operation_type")
     node = request.form.get("node_id")
     db_front_methods.create_surgery(node,category)
-    return redirect("/data")
+    return redirect(f"/data?category={category}")
 
 @app.route('/end-operation',methods=["POST"])
 def end_operation():
